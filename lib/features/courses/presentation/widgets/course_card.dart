@@ -17,19 +17,22 @@ class CourseCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(16)),
-                child: Image.asset(course.imageUrl,
-                    height: 180, width: double.infinity, fit: BoxFit.cover),
-              ),
-              const Positioned(
-                top: 8,
-                right: 8,
-                child: Icon(Icons.favorite_border, color: Colors.white),
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(16)),
+                  child: Image.asset(course.imageUrl,
+                      height: 180, width:double.infinity, fit: BoxFit.cover),
+                ),
+                const Positioned(
+                  top: 8,
+                  right: 8,
+                  child: Icon(Icons.favorite_border, color: Colors.white),
+                ),
+              ],
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(12),
@@ -38,12 +41,10 @@ class CourseCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Expanded(
-                      child: Text(
-                        course.title,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
-                      ),
+                    Text(
+                      course.title,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 16),
                     ),
                     Text(
                       '${course.price.toInt()} \$',

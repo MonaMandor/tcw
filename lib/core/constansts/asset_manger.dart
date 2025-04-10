@@ -22,4 +22,8 @@ class AssetManger {
   static const String reel = '${image}reel.png';
   static const String ex_1 = '${image}ex_1.png';
   static const String ex_2 = '${image}ex_2.png';
+  static const String rewards = '${image}rewards.png';
+  static const String point = '${image}point.png';
+  static const String notification = '${image}notification.png';
+  static const String container = '${image}container.png';
 }

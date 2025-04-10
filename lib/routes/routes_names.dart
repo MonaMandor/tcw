@@ -8,4 +8,5 @@ class AppRoutes {
   static String get oTPVerificationScreen => '/OTPVerificationScreen';
   static String get homeLayout => '/HomeLayout';
   static String get tCWMediaScreen => '/TCWMediaScreen';
+  static String get notificationScreen => '/NotificationScreen';
 }

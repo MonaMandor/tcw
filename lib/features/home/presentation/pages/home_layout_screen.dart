@@ -9,6 +9,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:tcw/features/courses/data/models/reel_model.dart';
 import 'package:tcw/features/courses/presentation/pages/media_screen.dart';
 import 'package:tcw/features/courses/presentation/pages/recommended_courses_screen.dart';
+import 'package:tcw/features/event/presentation/pages/event_screen.dart';
+import 'package:tcw/features/home/presentation/pages/home_screen.dart';
 
 class HomeLayout extends StatefulWidget {
   final int index;
@@ -33,8 +35,8 @@ class _HomeLayoutState extends State<HomeLayout> {
     super.initState();
     _pageController = PageController(initialPage: widget.index);
     screens.addAll([
-      Container(), // Replace with your actual screens
-      Container(),
+      HomeScreen(), 
+      EventScreen(),
       RecommendedCoursesScreen(),
       TCWMediaScreen(
         reels: [

@@ -8,6 +8,9 @@ class CourseModel {
   final String duration;
   final int available;
   final String coachImageUrl;
+  final int? watchedLessons;
+  final int? totalLessons;
+  final DateTime? date;
 
   CourseModel({
     required this.title,
@@ -19,5 +22,9 @@ class CourseModel {
     required this.duration,
     required this.available,
     required this.coachImageUrl,
+    this.watchedLessons,
+    this.totalLessons,
+    this.date,
   });
+
 }
