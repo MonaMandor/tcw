@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:tcw/core/constansts/context_extensions.dart';
 import 'package:tcw/core/theme/app_colors.dart';
 import 'package:tcw/features/notification/data/models/notification_model.dart';
