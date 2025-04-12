@@ -1,5 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:tcw/core/constansts/context_extensions.dart';
+import 'package:tcw/core/shared/shared_widget/app_bar.dart';
 import 'package:tcw/core/theme/app_colors.dart';
 import 'package:tcw/features/notification/data/models/notification_model.dart';
 import 'package:tcw/features/notification/presentation/widgets/notification_item.dart';
@@ -68,41 +70,34 @@ class NotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:AppColors.scaffoldBackground,
-     
+      backgroundColor: AppColors.scaffoldBackground,
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const SizedBox(height: 32),
-            Row(
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.arrow_back, color: Colors.black),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  SizedBox(width: context.propWidth(70)),
-                  Text(
-                    "Notifications",
-                    style: context.textTheme.headlineMedium,
-                  ),
-                  //back
-                ],
-              ),
-          const Text("Today", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+          appBar(
+            title: "Notifications",
+          ),
+          const Text("Today",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
           const SizedBox(height: 12),
-          ...today.map((notif) => NotificationItem(notification: notif)).toList(),
-
+          ...today
+              .map((notif) => NotificationItem(notification: notif))
+              .toList(),
           const SizedBox(height: 24),
-          const Text("Yesterday", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+          const Text("Yesterday",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
           const SizedBox(height: 12),
-          ...yesterday.map((notif) => NotificationItem(notification: notif)).toList(),
-
+          ...yesterday
+              .map((notif) => NotificationItem(notification: notif))
+              .toList(),
           const SizedBox(height: 24),
-          const Text("Last week", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+          const Text("Last week",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
           const SizedBox(height: 12),
-          ...lastWeek.map((notif) => NotificationItem(notification: notif)).toList(),
+          ...lastWeek
+              .map((notif) => NotificationItem(notification: notif))
+              .toList(),
         ]),
       ),
     );

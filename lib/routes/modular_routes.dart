@@ -13,6 +13,7 @@ import 'package:tcw/features/courses/data/models/reel_model.dart';
 import 'package:tcw/features/courses/presentation/pages/media_screen.dart';
 import 'package:tcw/features/home/presentation/pages/home_layout_screen.dart';
 import 'package:tcw/features/notification/presentation/pages/notification_screen.dart';
+import 'package:tcw/features/points/presentation/pages/points_rewards_screen.dart';
 import 'package:tcw/routes/routes_names.dart';
 
 List<ModularRoute> modularRoutes = <ChildRoute<dynamic>>[
@@ -84,6 +85,13 @@ List<ModularRoute> modularRoutes = <ChildRoute<dynamic>>[
     AppRoutes.notificationScreen,
     child: (_, ModularArguments args) =>  NotificationScreen(
      
+    ),
+    transition: TransitionType.upToDown,
+  ),
+  ChildRoute<dynamic>(
+    AppRoutes.pointsRewardsScreen,
+    child: (_, ModularArguments args) =>  PointsRewardsScreen(
+      showPointsTabFirst: args.data ?? true,
     ),
     transition: TransitionType.upToDown,
   ),

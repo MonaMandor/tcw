@@ -185,7 +185,13 @@ class _HomeScreenState extends State<HomeScreen> {
          
          
         }),
-        _buildStatItem(AssetManger.point, '100', 'Points'),
+        _buildStatItem(AssetManger.point, '100', 'Points',
+            onTab: () {
+          Modular.to.pushNamed(AppRoutes.pointsRewardsScreen,
+          
+            
+          );
+        }),
         _buildStatItem(AssetManger.rewards, '2', 'Rewards'),
        
       ],

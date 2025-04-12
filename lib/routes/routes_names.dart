@@ -9,4 +9,5 @@ class AppRoutes {
   static String get homeLayout => '/HomeLayout';
   static String get tCWMediaScreen => '/TCWMediaScreen';
   static String get notificationScreen => '/NotificationScreen';
+  static String get pointsRewardsScreen => '/PointsRewardsScreen';
 }
