@@ -17,7 +17,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final PageController _pageController = PageController();
-  int _currentPage = 0;
 
   final List<Map<String, String>> events = [
     {
@@ -192,7 +191,13 @@ class _HomeScreenState extends State<HomeScreen> {
             
           );
         }),
-        _buildStatItem(AssetManger.rewards, '2', 'Rewards'),
+        _buildStatItem(AssetManger.rewards, '2', 'Rewards',
+            onTab: () {
+          Modular.to.pushNamed(AppRoutes.pointsRewardsScreen,
+          arguments:false,
+          
+          );
+        }),
        
       ],
     );
@@ -267,7 +272,6 @@ class _HomeScreenState extends State<HomeScreen> {
             itemCount: events.length,
             onPageChanged: (index) {
               setState(() {
-                _currentPage = index;
               });
             },
             itemBuilder: (context, index) {
