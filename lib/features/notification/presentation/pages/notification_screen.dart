@@ -75,7 +75,7 @@ class NotificationScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const SizedBox(height: 32),
-          appBar(
+          CustomAppBar(
             title: "Notifications",
           ),
           const Text("Today",

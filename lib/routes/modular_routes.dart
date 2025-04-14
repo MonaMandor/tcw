@@ -11,6 +11,8 @@ import 'package:tcw/features/auth/presentation/pages/splash_screen.dart';
 import 'package:tcw/features/auth/presentation/pages/verification_screen.dart';
 import 'package:tcw/features/courses/data/models/reel_model.dart';
 import 'package:tcw/features/courses/presentation/pages/media_screen.dart';
+import 'package:tcw/features/courses/presentation/pages/my_library_screen.dart';
+import 'package:tcw/features/courses/presentation/pages/recommended_courses_screen.dart';
 import 'package:tcw/features/home/presentation/pages/home_layout_screen.dart';
 import 'package:tcw/features/notification/presentation/pages/notification_screen.dart';
 import 'package:tcw/features/points/presentation/pages/points_rewards_screen.dart';
@@ -92,6 +94,20 @@ List<ModularRoute> modularRoutes = <ChildRoute<dynamic>>[
     AppRoutes.pointsRewardsScreen,
     child: (_, ModularArguments args) =>  PointsRewardsScreen(
       showPointsTabFirst: args.data ?? true,
+    ),
+    transition: TransitionType.upToDown,
+  ),
+  ChildRoute<dynamic>(
+    AppRoutes.recommendedCoursesScreen,
+    child: (_, ModularArguments args) =>  RecommendedCoursesScreen(
+    
+    ),
+    transition: TransitionType.upToDown,
+  ),
+  ChildRoute<dynamic>(
+    AppRoutes.myLibraryScreen,
+    child: (_, ModularArguments args) =>  MyLibraryScreen(
+    
     ),
     transition: TransitionType.upToDown,
   ),

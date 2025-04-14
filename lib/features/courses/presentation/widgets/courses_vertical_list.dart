@@ -2,10 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:tcw/core/constansts/asset_manger.dart';
-import 'package:tcw/features/courses/presentation/pages/course_model.dart';
+import 'package:tcw/features/courses/data/models/course_model.dart';
 import 'package:tcw/features/courses/presentation/widgets/course_vertical_card.dart';
 
-import 'course_card.dart';
 
 class CourseListScreen extends StatelessWidget {
   final List<CourseModel> courses = [
@@ -56,7 +55,7 @@ class CourseListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  SizedBox(
-      height: 300, // Adjust height as needed
+      height: 400, // Adjust height as needed
       child: ListView.builder(
           itemCount: 3,
           itemBuilder: (context, index) => VerticalCourseCard(course: courses[index]),

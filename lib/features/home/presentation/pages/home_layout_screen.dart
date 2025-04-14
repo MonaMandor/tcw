@@ -3,12 +3,11 @@ import 'package:tcw/core/constansts/asset_manger.dart';
 import 'package:tcw/core/constansts/context_extensions.dart';
 import 'package:tcw/core/theme/app_Theme.dart';
 import 'package:tcw/core/theme/app_colors.dart';
-
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tcw/features/courses/data/models/reel_model.dart';
+import 'package:tcw/features/courses/presentation/pages/courses_screen.dart';
 import 'package:tcw/features/courses/presentation/pages/media_screen.dart';
-import 'package:tcw/features/courses/presentation/pages/recommended_courses_screen.dart';
 import 'package:tcw/features/event/presentation/pages/event_screen.dart';
 import 'package:tcw/features/home/presentation/pages/home_screen.dart';
 
@@ -37,7 +36,7 @@ class _HomeLayoutState extends State<HomeLayout> {
     screens.addAll([
       HomeScreen(), 
       EventScreen(),
-      RecommendedCoursesScreen(),
+      CoursesScreen(),
       TCWMediaScreen(
         reels: [
           Reel(

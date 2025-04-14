@@ -33,7 +33,7 @@ class _PointsRewardsScreenState extends State<PointsRewardsScreen> {
         child: Column(
           children: [
              SizedBox(height:context.propHeight(32)),
-             appBar(
+             CustomAppBar(
               title: 
               // if (widget.showPointsTabFirst) "Points" else "Rewards",
               widget.showPointsTabFirst ? "Points" : "Rewards",

@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:tcw/core/constansts/context_extensions.dart';
 
-class appBar extends StatelessWidget {
+class CustomAppBar extends StatelessWidget {
   final String title;
-  const appBar({
+  const CustomAppBar({
    required this.title,
     super.key,
   });

@@ -11,6 +11,7 @@ class CourseModel {
   final int? watchedLessons;
   final int? totalLessons;
   final DateTime? date;
+  final String? status;
 
   CourseModel({
     required this.title,
@@ -25,6 +26,7 @@ class CourseModel {
     this.watchedLessons,
     this.totalLessons,
     this.date,
+    this.status,
   });
 
 }

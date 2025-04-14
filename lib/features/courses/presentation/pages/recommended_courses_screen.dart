@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tcw/core/constansts/asset_manger.dart';
-import 'package:tcw/features/courses/presentation/pages/course_model.dart';
+import 'package:tcw/core/constansts/context_extensions.dart';
+import 'package:tcw/core/shared/shared_widget/app_bar.dart';
+import 'package:tcw/features/courses/data/models/course_model.dart';
 
 import '../widgets/course_card.dart';
 
@@ -42,55 +44,50 @@ class RecommendedCoursesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF9F9F9),
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: const Icon(Icons.arrow_back, color: Colors.black),
-        title: const Text(
-          'Recommended\nCourses',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-            height: 1.2,
-          ),
-        ),
-        centerTitle: true,
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
+     
+      body: SafeArea(
+        child: Column(
+          children: [
+            SizedBox(height: context.propHeight(32)),
+            CustomAppBar(
+                title: 'Recommended',
               ),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Search your course here...',
-                  hintStyle: const TextStyle(fontSize: 14),
-                  border: InputBorder.none,
-                  prefixIcon: const Icon(Icons.search),
-                  suffixIcon: IconButton(
-                    icon: const Icon(Icons.filter_list),
-                    onPressed: () {},
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Search your course here...',
+                    hintStyle: const TextStyle(fontSize: 14),
+                    border: InputBorder.none,
+                    prefixIcon: const Icon(Icons.search),
+                    suffixIcon: IconButton(
+                      icon: const Icon(Icons.filter_list),
+                      onPressed: () {},
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.only(bottom: 80),
-              itemCount: courses.length,
-              itemBuilder: (context, index) {
-                return CourseCard(course: courses[index]);
-              },
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: ListView.builder(
+                  padding: const EdgeInsets.only(bottom: 80),
+                  itemCount: courses.length,
+                  itemBuilder: (context, index) {
+                    return CourseCard(course: courses[index]);
+                  },
+                ),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       floatingActionButton: Container(
         width: 50,

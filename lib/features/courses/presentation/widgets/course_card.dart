@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tcw/core/theme/app_colors.dart';
-import 'package:tcw/features/courses/presentation/pages/course_model.dart';
+import 'package:tcw/features/courses/data/models/course_model.dart';
 
 class CourseCard extends StatelessWidget {
   final CourseModel course;
@@ -10,7 +10,7 @@ class CourseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    //  margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),

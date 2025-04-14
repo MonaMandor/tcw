@@ -10,4 +10,6 @@ class AppRoutes {
   static String get tCWMediaScreen => '/TCWMediaScreen';
   static String get notificationScreen => '/NotificationScreen';
   static String get pointsRewardsScreen => '/PointsRewardsScreen';
+  static String get recommendedCoursesScreen => '/RecommendedCoursesScreen';
+  static String get myLibraryScreen => '/MyLibraryScreen';
 }

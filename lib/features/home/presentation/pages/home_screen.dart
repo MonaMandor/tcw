@@ -5,7 +5,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:tcw/core/constansts/asset_manger.dart';
 import 'package:tcw/core/constansts/context_extensions.dart';
 import 'package:tcw/core/theme/app_colors.dart';
-import 'package:tcw/features/courses/presentation/pages/course_model.dart';
+import 'package:tcw/features/courses/data/models/course_model.dart';
 import 'package:tcw/features/courses/presentation/widgets/course_list.dart';
 import 'package:tcw/features/courses/presentation/widgets/courses_vertical_list.dart';
 import 'package:tcw/routes/routes_names.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tcw/core/constansts/context_extensions.dart';
-import 'package:tcw/features/courses/presentation/pages/course_model.dart';
+import 'package:tcw/features/courses/data/models/course_model.dart';
 import 'package:tcw/features/courses/presentation/widgets/watching_course.dart';
 class CourseListHorizontal extends StatelessWidget {
   final List<CourseModel> courses;

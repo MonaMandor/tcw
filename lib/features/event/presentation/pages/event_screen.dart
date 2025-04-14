@@ -1,12 +1,11 @@
+// ignore_for_file: unused_field
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:tcw/core/constansts/asset_manger.dart';
 import 'package:tcw/core/constansts/context_extensions.dart';
 import 'package:tcw/core/theme/app_colors.dart';
-import 'package:tcw/features/courses/presentation/pages/course_model.dart';
-import 'package:tcw/features/courses/presentation/widgets/course_list.dart';
-import 'package:tcw/features/courses/presentation/widgets/courses_vertical_list.dart';
 import 'package:tcw/features/event/data/models/event_model.dart';
 import 'package:tcw/features/event/presentation/widgets/past_event.dart';
 import 'package:tcw/features/event/presentation/widgets/upComing_event.dart';
