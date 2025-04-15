@@ -1,11 +1,12 @@
-
 import 'package:flutter/material.dart';
 import 'package:tcw/core/constansts/context_extensions.dart';
 
 class CustomAppBar extends StatelessWidget {
   final String title;
+  final double? width;
   const CustomAppBar({
-   required this.title,
+    required this.title,
+    this.width,
     super.key,
   });
 
@@ -19,7 +20,7 @@ class CustomAppBar extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        SizedBox(width: context.propWidth(70)),
+        SizedBox(width: width ?? context.propWidth(12)),
         Text(
           title,
           style: context.textTheme.headlineMedium,

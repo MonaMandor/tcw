@@ -8,6 +8,10 @@ import 'package:tcw/core/theme/app_colors.dart';
 import 'package:tcw/features/courses/data/models/course_model.dart';
 import 'package:tcw/features/courses/presentation/widgets/course_list.dart';
 import 'package:tcw/features/courses/presentation/widgets/courses_vertical_list.dart';
+import 'package:tcw/features/home/presentation/widgets/search_widget.dart';
+import 'package:tcw/features/home/presentation/widgets/side_menu_widget.dart';
+import 'package:tcw/features/home/presentation/widgets/state_item_widget.dart';
+import 'package:tcw/features/home/presentation/widgets/user_header_widget.dart';
 import 'package:tcw/routes/routes_names.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,7 +21,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final PageController _pageController = PageController();
-
+final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final List<Map<String, String>> events = [
     {
       'title':
@@ -48,128 +52,66 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-   return Scaffold(
-  backgroundColor: Colors.white,
-  body: SafeArea(
-    child: SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: context.propHeight(32)),
-          _buildHeader(),
-          SizedBox(height: context.propHeight(24)),
-          _buildStats(),
-          SizedBox(height: context.propHeight(24)),
-          _buildSearchAndFilter(),
-          SizedBox(height: context.propHeight(24)),
-          _buildEventSlider(),
-          SizedBox(height: context.propHeight(16)),
-          _buildContinueWatching(),
-          SizedBox(height: context.propHeight(24)),
-
-          SizedBox(height: context.propHeight(10)),
-          CourseListHorizontal(
-            courses: [
-              CourseModel(
-                title: 'Lesson 6',
-                imageUrl: AssetManger.ex_1,
-                coachName: 'Ahmed Mohamed',
-                coachImageUrl: AssetManger.ex_2,
-                price: 0,
-                lessons: 12,
-                duration: '2h 20m',
-                available: 10,
-                coachRole: 'Senior Developer',
-              ),
-              CourseModel(
-                title: 'Lesson 7',
-                imageUrl: AssetManger.container,
-                coachName: 'Sara Ali',
-                coachImageUrl: AssetManger.ex_1,
-                price: 0,
-                lessons: 15,
-                duration: '1h 50m',
-                available: 5,
-                coachRole: 'Software Engineer',
-              ),
-              // Add more if needed
-            ],
-          ),
-          SizedBox(height: context.propHeight(24)),
-          _buildMyCourses(),
-          SizedBox(height: context.propHeight(10)),
-          CourseListScreen()
-        ],
-      ),
-    ),
-  ),
-);
-
-  }
-
-  Widget _buildHeader() {
-    return SafeArea(
-      child: Column(
-        children: [
-          SizedBox(
-            height: context.propHeight(12),
-          ),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+    return Scaffold(
+        key: _scaffoldKey,
+      drawer: SideMenu(),
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-               Icon(Icons.calendar_today_outlined, size: 25),
-          SizedBox(width: 8),
-          Icon(Icons.more_vert),
-            ],
-          
-          ),
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              SizedBox(
-                width: context.propWidth(70),
-                height: context.propHeight(70),
-                child: CircularProgressIndicator(
-                  value: 0.6,
-                  strokeWidth: 4,
-                  backgroundColor: Colors.grey.shade300,
-                  valueColor: AlwaysStoppedAnimation<Color>(AppColors.primaryColor),
-                ),
+              SizedBox(height: context.propHeight(32)),
+              UserHeader(context: context,
+                onTap: () {
+                  _scaffoldKey.currentState?.openDrawer();
+                },
               ),
-              const CircleAvatar(
-                radius: 28,
-                backgroundImage: AssetImage(AssetManger.ex_1),
+              SizedBox(height: context.propHeight(24)),
+              _buildStats(),
+              SizedBox(height: context.propHeight(24)),
+              SearchWidget(context: context),
+              SizedBox(height: context.propHeight(24)),
+              _buildEventSlider(),
+              SizedBox(height: context.propHeight(16)),
+              _buildContinueWatching(),
+              SizedBox(height: context.propHeight(24)),
+              SizedBox(height: context.propHeight(10)),
+              CourseListHorizontal(
+                courses: [
+                  CourseModel(
+                    title: 'Lesson 6',
+                    imageUrl: AssetManger.ex_1,
+                    coachName: 'Ahmed Mohamed',
+                    coachImageUrl: AssetManger.ex_2,
+                    price: 0,
+                    lessons: 12,
+                    duration: '2h 20m',
+                    available: 10,
+                    coachRole: 'Senior Developer',
+                  ),
+                  CourseModel(
+                    title: 'Lesson 7',
+                    imageUrl: AssetManger.container,
+                    coachName: 'Sara Ali',
+                    coachImageUrl: AssetManger.ex_1,
+                    price: 0,
+                    lessons: 15,
+                    duration: '1h 50m',
+                    available: 5,
+                    coachRole: 'Software Engineer',
+                  ),
+                  // Add more if needed
+                ],
               ),
+              SizedBox(height: context.propHeight(24)),
+              _buildMyCourses(),
+              SizedBox(height: context.propHeight(10)),
+              CourseListScreen()
             ],
           ),
-           SizedBox(
-            height: context.propHeight(12),
-           ),
-          Text('Good Morning, Ahmed',
-             
-             style: context.textTheme.headlineLarge?.copyWith(
-               fontSize: 16,
-                fontWeight: FontWeight.bold,
-             )),
-           SizedBox(height: context.propHeight(12)),
-      
-          Text('Continue Your Journey And Achieve',
-              style: context.textTheme.headlineLarge?.copyWith(
-                fontSize: 11,
-                fontWeight: FontWeight.w200,
-                color: Colors.grey.shade600,
-                
-              )),
-         
-          Text('Your Goals',
-              style: context.textTheme.headlineLarge?.copyWith(
-                fontSize: 11,
-                fontWeight: FontWeight.w200,
-                color: Colors.grey.shade600,
-              )),
-         
-        ],
+        ),
       ),
     );
   }
@@ -178,85 +120,35 @@ class _HomeScreenState extends State<HomeScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        _buildStatItem(AssetManger.notification, '1', 'Notification',
+        StateItem(
+            context: context,
+            icon: AssetManger.notification,
+            count: '1',
+            label: 'Notification',
             onTab: () {
-         Modular.to.pushNamed(AppRoutes.notificationScreen);
-         
-         
-        }),
-        _buildStatItem(AssetManger.point, '100', 'Points',
+              Modular.to.pushNamed(AppRoutes.notificationScreen);
+            }),
+        StateItem(
+            context: context,
+            icon: AssetManger.point,
+            count: '100',
+            label: 'Points',
             onTab: () {
-          Modular.to.pushNamed(AppRoutes.pointsRewardsScreen,
-          
-            
-          );
-        }),
-        _buildStatItem(AssetManger.rewards, '2', 'Rewards',
+              Modular.to.pushNamed(
+                AppRoutes.pointsRewardsScreen,
+              );
+            }),
+        StateItem(
+            context: context,
+            icon: AssetManger.rewards,
+            count: '2',
+            label: 'Rewards',
             onTab: () {
-          Modular.to.pushNamed(AppRoutes.pointsRewardsScreen,
-          arguments:false,
-          
-          );
-        }),
-       
-      ],
-    );
-  }
-
-  Widget _buildStatItem(String icon, String count, String label, {VoidCallback? onTab}) {
-    return Column(
-      children: [
-        GestureDetector(
-          onTap: onTab,
-          child: Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(color: AppColors.primaryColor, width: 2),
-            ),
-            child: Center(child: Image.asset(icon, width: 24, height: 24)),
-          ),
-        ),
-         SizedBox(height: context.propHeight(6)),
-        Text(count,
-            style: GoogleFonts.poppins(
-                fontWeight: FontWeight.bold, fontSize: 14)),
-        Text(label,
-            style: GoogleFonts.poppins(fontSize: 12, color: Colors.grey)),
-      ],
-    );
-  }
-
-  Widget _buildSearchAndFilter() {
-    return Row(
-      children: [
-        Expanded(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: Colors.grey.shade300),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              children: [
-                const Icon(Icons.search, color: Colors.grey),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Search your course here....',
-                      hintStyle: GoogleFonts.poppins(fontSize: 12),
-                      border: InputBorder.none,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-         SizedBox(width: context.propWidth(12)),
-        const Icon(Icons.filter_alt_outlined,  size: 30),
+              Modular.to.pushNamed(
+                AppRoutes.pointsRewardsScreen,
+                arguments: false,
+              );
+            }),
       ],
     );
   }
@@ -271,8 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
             controller: _pageController,
             itemCount: events.length,
             onPageChanged: (index) {
-              setState(() {
-              });
+              setState(() {});
             },
             itemBuilder: (context, index) {
               final event = events[index];
@@ -301,7 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     Padding(
-                      padding:  EdgeInsets.all(
+                      padding: EdgeInsets.all(
                         context.propHeight(12),
                       ),
                       child: Align(
@@ -310,14 +201,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             const Icon(Icons.calendar_today,
                                 color: Colors.white, size: 14),
-                             SizedBox(width: context.propWidth(4)),
+                            SizedBox(width: context.propWidth(4)),
                             Text(event['date']!,
                                 style: GoogleFonts.poppins(
                                     fontSize: 10, color: Colors.white)),
-                             SizedBox(width:  context.propWidth(12)),
+                            SizedBox(width: context.propWidth(12)),
                             const Icon(Icons.access_time,
                                 color: Colors.white, size: 14),
-                             SizedBox(width: context.propWidth(4)),
+                            SizedBox(width: context.propWidth(4)),
                             Text(event['time']!,
                                 style: GoogleFonts.poppins(
                                     fontSize: 10, color: Colors.white)),
@@ -325,7 +216,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
-                    
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       child: Align(
@@ -340,12 +230,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all( 12),
+                      padding: const EdgeInsets.all(12),
                       child: Align(
                         alignment: Alignment.bottomLeft,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor:AppColors.primaryColor,
+                            backgroundColor: AppColors.primaryColor,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
                             ),
@@ -364,7 +254,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   shape: BoxShape.circle,
                                   color: Colors.white,
                                 ),
-                                child:  Icon(Icons.play_arrow_rounded,
+                                child: Icon(Icons.play_arrow_rounded,
                                     size: 12, color: AppColors.primaryColor),
                               ),
                             ],
@@ -378,7 +268,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
           ),
         ),
-         SizedBox(height: context.propHeight(12)),
+        SizedBox(height: context.propHeight(12)),
         Center(
           child: SmoothPageIndicator(
             controller: _pageController,
@@ -400,28 +290,29 @@ class _HomeScreenState extends State<HomeScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text('Continue Watching',
-            style: GoogleFonts.poppins(
-                fontSize: 16, fontWeight: FontWeight.bold)),
-         CircleAvatar(
+            style:
+                GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold)),
+        CircleAvatar(
           radius: 10,
           backgroundColor: AppColors.primaryColor,
           child: Icon(Icons.arrow_forward_ios, size: 12, color: Colors.white),
         ),
-        
       ],
     );
   }
-   Widget _buildMyCourses() {
+
+  Widget _buildMyCourses() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text('Your Courses',
-            style: GoogleFonts.poppins(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+            style:
+                GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold)),
         Text('See All',
             style: GoogleFonts.poppins(
-                fontSize: 12, fontWeight: FontWeight.w400, color: AppColors.primaryColor)),
-        
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                color: AppColors.primaryColor)),
       ],
     );
   }

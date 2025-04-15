@@ -26,4 +26,19 @@ class AssetManger {
   static const String point = '${image}point.png';
   static const String notification = '${image}notification.png';
   static const String container = '${image}container.png';
+  static const String coursesIcon = '${image}coursesIcon.png';
+  static const String eventIcon = '${image}eventIcon.png';
+  static const String inboxIcon = '${image}inboxIcon.png';
+  static const String masterMindIcon = '${image}masterMindIcon.png';
+  static const String payMentIcon = '${image}payMentIcon.png';
+  static const String taskIcon = '${image}taskIcon.png';
+  static const String tcwIcon = '${image}tcwIcon.png';
+  static const String settingIcon = '${image}settingIcon.png';
+  static const String logOutIcon = '${image}logOutIcon.png';
+  static const String personalDetailsIcon = '${image}personalDetailsIcon.png';
+  static const String subscriptionsIcon = '${image}subscriptionsIcon.png';
+  static const String deletIcon = '${image}deletIcon.png';
+  static const String support = '${image}support.png';
+  static const String heart = '${image}heart.png';
+
 }

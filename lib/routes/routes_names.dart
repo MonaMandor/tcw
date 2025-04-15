@@ -12,4 +12,9 @@ class AppRoutes {
   static String get pointsRewardsScreen => '/PointsRewardsScreen';
   static String get recommendedCoursesScreen => '/RecommendedCoursesScreen';
   static String get myLibraryScreen => '/MyLibraryScreen';
+  static String get settingsScreen => '/SettingsScreen';
+  static String get personalDetailsScreen => '/PersonalDetailsScreen';
+  static String get supportScreen => '/SupportScreen';
+  static String get wishListScreen => '/WishListScreen';
+
 }

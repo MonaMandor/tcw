@@ -17,9 +17,7 @@ class CustomTextField extends StatefulWidget {
   final String? errorMessage;
   final TextStyle? hintStyle;
   final bool obscureText;
-  final Widget suffix;
-  final Widget suffix_;
-  final Widget? prefix;
+
 
   const CustomTextField({
     super.key,
@@ -34,9 +32,7 @@ class CustomTextField extends StatefulWidget {
     this.errorMessage,
     required this.hintStyle,
     required this.obscureText,
-    required this.suffix,
-    required this.suffix_,
-    this.prefix,
+
   });
 
   @override
@@ -44,18 +40,13 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
-  bool hasText = false;
+
 
   @override
   void initState() {
     super.initState();
 
-    // Add a listener to the controller to detect changes in the text field
-    widget.controller?.addListener(() {
-      setState(() {
-        hasText = widget.controller?.text.isNotEmpty ?? false;
-      });
-    });
+   
   }
 
   @override
@@ -95,15 +86,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               hintText: widget.hintText,
               hintStyle: widget.hintStyle,
               labelText: widget.labelText,
-              prefixIcon: widget.prefix,
-              suffixIcon: Visibility(
-                visible: !hasText,
-                child: widget.suffix,
-              ),
-              suffix: Visibility(
-                visible: hasText,
-                child: widget.suffix_,
-              ),
+             
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
                 borderSide: const BorderSide(color: Colors.red, width: 1.0),
@@ -111,30 +94,27 @@ class _CustomTextFieldState extends State<CustomTextField> {
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
                   borderSide: BorderSide(
-                    color: hasText
-                        ? Color(0xFF2E4EA0)
-                        : Color(0xFFA9B3BC).withOpacity(.00001),
+                  color:    Colors.grey ,
                     width: 1.0,
                   )),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
                 borderSide: BorderSide(
-                  color: hasText
-                      ? Color(0xFF2E4EA0)
-                      : Color(0xFFA9B3BC).withOpacity(.00001),
+                  color: Colors.grey,
                   width: 1.0,
                 ),
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
                 borderSide: BorderSide(
-                  color: hasText ? Colors.green : Colors.red,
+                  color: Colors.grey,
                   width: 1.0,
                 ),
               ),
               contentPadding: EdgeInsets.only(
                 bottom: context.propHeight(15),
                 right: context.propWidth(14),
+                left: context.propWidth(14),
               ),
             ),
           ),

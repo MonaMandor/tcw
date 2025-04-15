@@ -13,9 +13,13 @@ import 'package:tcw/features/courses/data/models/reel_model.dart';
 import 'package:tcw/features/courses/presentation/pages/media_screen.dart';
 import 'package:tcw/features/courses/presentation/pages/my_library_screen.dart';
 import 'package:tcw/features/courses/presentation/pages/recommended_courses_screen.dart';
+import 'package:tcw/features/courses/presentation/pages/wish_list_screen.dart';
 import 'package:tcw/features/home/presentation/pages/home_layout_screen.dart';
 import 'package:tcw/features/notification/presentation/pages/notification_screen.dart';
 import 'package:tcw/features/points/presentation/pages/points_rewards_screen.dart';
+import 'package:tcw/features/setting/presentation/pages/personal_details_screen.dart';
+import 'package:tcw/features/setting/presentation/pages/setting_screen.dart';
+import 'package:tcw/features/setting/presentation/pages/support_screen.dart';
 import 'package:tcw/routes/routes_names.dart';
 
 List<ModularRoute> modularRoutes = <ChildRoute<dynamic>>[
@@ -111,4 +115,25 @@ List<ModularRoute> modularRoutes = <ChildRoute<dynamic>>[
     ),
     transition: TransitionType.upToDown,
   ),
+  ChildRoute<dynamic>(
+    AppRoutes.settingsScreen,
+    child: (_, ModularArguments args) =>  const SettingsScreen(),
+    transition: TransitionType.upToDown,
+  ),
+  ChildRoute<dynamic>(
+    AppRoutes.personalDetailsScreen,
+    child: (_, ModularArguments args) =>  const PersonalDetailsScreen(),
+    transition: TransitionType.upToDown,
+  ),
+  ChildRoute<dynamic>(
+    AppRoutes.supportScreen,
+    child: (_, ModularArguments args) =>  const SupportScreen(),
+    transition: TransitionType.upToDown,
+  ),
+  ChildRoute<dynamic>(
+    AppRoutes.wishListScreen,
+    child: (_, ModularArguments args) =>  const WishListScreen(),
+    transition: TransitionType.upToDown,
+  ),
+  
 ];
