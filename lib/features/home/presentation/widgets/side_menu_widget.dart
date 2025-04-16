@@ -7,64 +7,75 @@ import 'package:tcw/features/home/presentation/widgets/state_item_widget.dart';
 import 'package:tcw/features/home/presentation/widgets/user_header_widget.dart';
 import 'package:tcw/routes/routes_names.dart';
 
-
 class SideMenu extends StatelessWidget {
-  const SideMenu({super.key});
+   SideMenu({super.key, });
+
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       backgroundColor: Colors.white,
-     
       child: SafeArea(
         child: SingleChildScrollView(
           child: Column(
-            children: [ 
-               SizedBox(height: context.propHeight(20)),
-                UserHeader(context: context,
+            children: [
+              SizedBox(height: context.propHeight(20)),
+              UserHeader(
+                context: context,
                 isAside: true,
-                 
-                ),
-                SizedBox(height: context.propHeight(24)),
-                _buildStats( context), 
-               const SizedBox(height: 20),
-          
-              const Divider(),
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-                  child: Text("overview", style: TextStyle(color: Colors.grey, fontSize: 12)),
-                ),
               ),
-               MenuItem(icon:  AssetManger.eventIcon
-              
-              
-              , title: "Events"),
-               MenuItem(icon:  AssetManger.inboxIcon, title: "Inbox"),
-               MenuItem(icon:  AssetManger.coursesIcon, title: "Courses"),
-              const MenuItem(icon:  AssetManger.taskIcon, title: "Task"),
-              const MenuItem(icon:  AssetManger.payMentIcon, title: "Payments"),
-              const MenuItem(icon:  AssetManger.masterMindIcon, title: "Master mind"),
-              const MenuItem(icon:  AssetManger.tcwIcon, title: "TCW media"),
-          
+              SizedBox(height: context.propHeight(24)),
+              _buildStats(context),
               const SizedBox(height: 20),
               const Divider(),
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-                  child: Text("Setting", style: TextStyle(color: Colors.grey, fontSize: 12)),
+                  child: Text("overview",
+                      style: TextStyle(color: Colors.grey, fontSize: 12)),
                 ),
               ),
+              MenuItem(
+                  icon: AssetManger.eventIcon,
+                  onTap: () {
+                   
+                    Modular.to.popUntil((route) => route.isFirst);
+                    Modular.to.pushNamed(AppRoutes.eventScreen);
+                  },
+                  title: "Events"),
+              MenuItem(icon: AssetManger.inboxIcon, title: "Inbox"),
+              MenuItem(icon: AssetManger.coursesIcon, title: "Courses",
+                  onTap: () {
+                    Modular.to.pushNamed(AppRoutes.coursesScreen);
+                  }),
+               MenuItem(icon: AssetManger.taskIcon, title: "Task"),
+               MenuItem(icon: AssetManger.payMentIcon, title: "Payments",
+                  onTap: () {
+                    Modular.to.pushNamed(AppRoutes.paymentsScreen);
+                  }),
                MenuItem(
-               icon:  AssetManger.settingIcon,
-               onTap: () {
-                  Modular.to.pushNamed(AppRoutes.settingsScreen);
-             
-               },
-                
-                 title: "Setting"),
+                  icon: AssetManger.masterMindIcon, title: "Master mind"),
+               MenuItem(icon: AssetManger.tcwIcon, title: "TCW media",
+                  onTap: () {
+                    Modular.to.pushNamed(AppRoutes.tCWMediaScreen);
+                  }),
+              const SizedBox(height: 20),
+              const Divider(),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                  child: Text("Setting",
+                      style: TextStyle(color: Colors.grey, fontSize: 12)),
+                ),
+              ),
+              MenuItem(
+                  icon: AssetManger.settingIcon,
+                  onTap: () {
+                    Modular.to.pushNamed(AppRoutes.settingsScreen);
+                  },
+                  title: "Setting"),
               const MenuItem(
                 icon: AssetManger.logOutIcon,
                 title: "Log out",
@@ -79,44 +90,42 @@ class SideMenu extends StatelessWidget {
   }
 }
 
-  Widget _buildStats( BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        StateItem(
-            context: context,
-            icon: AssetManger.notification,
-            count: '1',
-            label: 'Notification',
-            onTab: () {
-              Modular.to.pushNamed(AppRoutes.notificationScreen);
-            }),
-        StateItem(
-            context: context,
-            icon: AssetManger.point,
-            count: '100',
-            label: 'Points',
-            onTab: () {
-              Modular.to.pushNamed(
-                AppRoutes.pointsRewardsScreen,
-              );
-            }),
-        StateItem(
-            context: context,
-            icon: AssetManger.rewards,
-            count: '2',
-            label: 'Rewards',
-            onTab: () {
-              Modular.to.pushNamed(
-                AppRoutes.pointsRewardsScreen,
-                arguments: false,
-              );
-            }),
-      ],
-    );
-  }
-
-
+Widget _buildStats(BuildContext context) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    children: [
+      StateItem(
+          context: context,
+          icon: AssetManger.notification,
+          count: '1',
+          label: 'Notification',
+          onTab: () {
+            Modular.to.pushNamed(AppRoutes.notificationScreen);
+          }),
+      StateItem(
+          context: context,
+          icon: AssetManger.point,
+          count: '100',
+          label: 'Points',
+          onTab: () {
+            Modular.to.pushNamed(
+              AppRoutes.pointsRewardsScreen,
+            );
+          }),
+      StateItem(
+          context: context,
+          icon: AssetManger.rewards,
+          count: '2',
+          label: 'Rewards',
+          onTab: () {
+            Modular.to.pushNamed(
+              AppRoutes.pointsRewardsScreen,
+              arguments: false,
+            );
+          }),
+    ],
+  );
+}
 
 class _StatItem extends StatelessWidget {
   final IconData icon;

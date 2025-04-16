@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:tcw/core/constansts/asset_manger.dart';
 import 'package:tcw/core/constansts/context_extensions.dart';
 import 'package:tcw/core/shared/shared_widget/app_bar.dart';
+import 'package:tcw/features/setting/presentation/widgets/delete_account_dialog.dart';
 import 'package:tcw/routes/routes_names.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -23,6 +24,7 @@ class SettingsScreen extends StatelessWidget {
               CustomAppBar(title: 'Settings'),
                SizedBox(height: context.propHeight(24)),
               _settingTile(
+                context: context,
                 icon:  AssetManger.personalDetailsIcon,
                 label: 'Personal Details',
                 onTap: () {
@@ -30,6 +32,7 @@ class SettingsScreen extends StatelessWidget {
                 },
               ),
               _settingTile(
+                context: context,
                 icon: AssetManger.subscriptionsIcon,
                 label: 'TCW Spaces',
                 onTap: () {
@@ -37,6 +40,7 @@ class SettingsScreen extends StatelessWidget {
                 },
                ),
               _settingTile(
+                context: context,
                 icon: AssetManger.heart,
                 label: 'Wishlist',
                 onTap: () {
@@ -44,6 +48,7 @@ class SettingsScreen extends StatelessWidget {
                 },
               ),
               _settingTile(
+                context: context,
                 icon: AssetManger.support,
                 label: 'Support & Complaints',
                 onTap: () {
@@ -51,6 +56,7 @@ class SettingsScreen extends StatelessWidget {
                 },
               ),
               _settingTile(
+                context: context,
                 icon: AssetManger.deletIcon,
                 label: 'Delete Account',
                 onTap: () {
@@ -64,7 +70,7 @@ class SettingsScreen extends StatelessWidget {
         ),
       ),
     );
-  }
+  } 
 
   Widget _settingTile({
     required String icon,
@@ -73,6 +79,7 @@ class SettingsScreen extends StatelessWidget {
     Widget? trailing,
     Color color = Colors.black,
     Color iconColor = Colors.black,
+    required dynamic context,
   }) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6.0),
@@ -95,7 +102,7 @@ class SettingsScreen extends StatelessWidget {
             children: [
              Image.asset(
                 icon,
-                width: 24,
+                width: context.propWidth(24),
                 height: 24,
                 color: iconColor,
               ),
@@ -129,80 +136,4 @@ void showDeleteAccountDialog(BuildContext context) {
   );
 }
 
-}
-
-class DeleteAccountDialog extends StatelessWidget {
-  const DeleteAccountDialog({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Dialog(
-      backgroundColor: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(Icons.delete_outline, size: 48, color: Colors.black54),
-            const SizedBox(height: 20),
-            const Text(
-              'Are You Sure You Want To\nDelete Your Account?',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: Colors.black87,
-              ),
-            ),
-            const SizedBox(height: 30),
-            Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: () => Navigator.pop(context),
-                    style: OutlinedButton.styleFrom(
-                      side: const BorderSide(color: Colors.grey),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                    ),
-                    child: const Text(
-                      'Cancel',
-                      style: TextStyle(color: Colors.black54),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Your delete logic here
-                      Navigator.pop(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                    ),
-                    child: const Text(
-                      'Delete',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
-    );
-  }
 }

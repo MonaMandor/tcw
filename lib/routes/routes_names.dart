@@ -16,5 +16,8 @@ class AppRoutes {
   static String get personalDetailsScreen => '/PersonalDetailsScreen';
   static String get supportScreen => '/SupportScreen';
   static String get wishListScreen => '/WishListScreen';
+  static String get eventScreen => '/EventScreen';
+  static String get coursesScreen => '/CoursesScreen';
+  static String get paymentsScreen => '/PaymentsScreen';
 
 }

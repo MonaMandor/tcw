@@ -1,12 +1,12 @@
-// ignore_for_file: unused_field
+// ignore_for_file: unused_field, prefer_const_literals_to_create_immutables, prefer_final_fields
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:tcw/core/constansts/asset_manger.dart';
 import 'package:tcw/core/constansts/context_extensions.dart';
 import 'package:tcw/core/theme/app_colors.dart';
 import 'package:tcw/features/event/data/models/event_model.dart';
+import 'package:tcw/features/event/presentation/widgets/event_slider_widget.dart';
 import 'package:tcw/features/event/presentation/widgets/past_event.dart';
 import 'package:tcw/features/event/presentation/widgets/upComing_event.dart';
 
@@ -113,7 +113,9 @@ class _EventScreenState extends State<EventScreen> {
               SizedBox(height: context.propHeight(12)),
               _buildSearchAndCalender(),
               SizedBox(height: context.propHeight(24)),
-              _buildEventSlider(),
+              EventSlider(
+                events: events
+              ),
               SizedBox(height: context.propHeight(16)),
               _buildUpComingEvents(),
               SizedBox(height: context.propHeight(10)),
@@ -169,100 +171,7 @@ class _EventScreenState extends State<EventScreen> {
       ),
     );
   }
-
-  Widget _buildHeader() {
-    return SafeArea(
-      child: Column(
-        children: [
-          SizedBox(
-            height: context.propHeight(12),
-          ),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Icon(Icons.calendar_today_outlined, size: 25),
-              SizedBox(width: 8),
-              Icon(Icons.more_vert),
-            ],
-          ),
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              SizedBox(
-                width: context.propWidth(70),
-                height: context.propHeight(70),
-                child: CircularProgressIndicator(
-                  value: 0.6,
-                  strokeWidth: 4,
-                  backgroundColor: Colors.grey.shade300,
-                  valueColor:
-                      AlwaysStoppedAnimation<Color>(AppColors.primaryColor),
-                ),
-              ),
-              const CircleAvatar(
-                radius: 28,
-                backgroundImage: AssetImage(AssetManger.ex_1),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: context.propHeight(12),
-          ),
-          Text('Good Morning, Ahmed',
-              style: context.textTheme.headlineLarge?.copyWith(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              )),
-          SizedBox(height: context.propHeight(12)),
-          Text('Continue Your Journey And Achieve',
-              style: context.textTheme.headlineLarge?.copyWith(
-                fontSize: 11,
-                fontWeight: FontWeight.w200,
-                color: Colors.grey.shade600,
-              )),
-          Text('Your Goals',
-              style: context.textTheme.headlineLarge?.copyWith(
-                fontSize: 11,
-                fontWeight: FontWeight.w200,
-                color: Colors.grey.shade600,
-              )),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildStats() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        _buildStatItem(AssetManger.notification, '1', 'Notification'),
-        _buildStatItem(AssetManger.point, '100', 'Points'),
-        _buildStatItem(AssetManger.rewards, '2', 'Rewards'),
-      ],
-    );
-  }
-
-  Widget _buildStatItem(String icon, String count, String label) {
-    return Column(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(color: AppColors.primaryColor, width: 2),
-          ),
-          child: Center(child: Image.asset(icon, width: 24, height: 24)),
-        ),
-        SizedBox(height: context.propHeight(6)),
-        Text(count,
-            style:
-                GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 14)),
-        Text(label,
-            style: GoogleFonts.poppins(fontSize: 12, color: Colors.grey)),
-      ],
-    );
-  }
-
+ 
   Widget _buildSearchAndCalender() {
     return Row(
       children: [
@@ -297,139 +206,6 @@ class _EventScreenState extends State<EventScreen> {
     );
   }
 
-  Widget _buildEventSlider() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: context.propHeight(230),
-          child: PageView.builder(
-            controller: _pageController,
-            itemCount: events.length,
-            onPageChanged: (index) {
-              setState(() {
-                _currentPage = index;
-              });
-            },
-            itemBuilder: (context, index) {
-              final event = events[index];
-              return Container(
-                margin: const EdgeInsets.only(right: 8),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  image: DecorationImage(
-                    image: AssetImage(event['image']!),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                child: Stack(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.black.withOpacity(0.6),
-                            Colors.transparent
-                          ],
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(
-                        context.propHeight(12),
-                      ),
-                      child: Align(
-                        alignment: Alignment.topRight,
-                        child: Row(
-                          children: [
-                            const Icon(Icons.calendar_today,
-                                color: Colors.white, size: 14),
-                            SizedBox(width: context.propWidth(4)),
-                            Text(event['date']!,
-                                style: GoogleFonts.poppins(
-                                    fontSize: 10, color: Colors.white)),
-                            SizedBox(width: context.propWidth(12)),
-                            const Icon(Icons.access_time,
-                                color: Colors.white, size: 14),
-                            SizedBox(width: context.propWidth(4)),
-                            Text(event['time']!,
-                                style: GoogleFonts.poppins(
-                                    fontSize: 10, color: Colors.white)),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          event['title']!,
-                          style: GoogleFonts.poppins(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(12),
-                      child: Align(
-                        alignment: Alignment.bottomLeft,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.primaryColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                          ),
-                          onPressed: () {},
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text('join now',
-                                  style:
-                                      GoogleFonts.poppins(color: Colors.white)),
-                              const SizedBox(width: 8),
-                              Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.white,
-                                ),
-                                child: Icon(Icons.play_arrow_rounded,
-                                    size: 12, color: AppColors.primaryColor),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-        ),
-        SizedBox(height: context.propHeight(12)),
-        Center(
-          child: SmoothPageIndicator(
-            controller: _pageController,
-            count: events.length,
-            effect: WormEffect(
-              dotColor: Colors.grey.shade300,
-              activeDotColor: AppColors.primaryColor,
-              dotHeight: 8,
-              dotWidth: 8,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
 
   Widget _buildUpComingEvents() {
     return Row(

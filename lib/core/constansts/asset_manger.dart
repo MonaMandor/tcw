@@ -40,5 +40,6 @@ class AssetManger {
   static const String deletIcon = '${image}deletIcon.png';
   static const String support = '${image}support.png';
   static const String heart = '${image}heart.png';
+  static const String balance = '${image}balance.png';
 
 }

@@ -80,6 +80,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       backgroundColor: null,
       body: PageView(
         controller: _pageController,

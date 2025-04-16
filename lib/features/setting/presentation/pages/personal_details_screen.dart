@@ -3,6 +3,7 @@ import 'package:tcw/core/constansts/context_extensions.dart';
 import 'package:tcw/core/shared/shared_widget/Custom_button.dart';
 import 'package:tcw/core/shared/shared_widget/app_bar.dart';
 import 'package:tcw/core/shared/shared_widget/customTextFormFiled.dart';
+import 'package:tcw/features/setting/presentation/widgets/label_widget.dart';
 
 class PersonalDetailsScreen extends StatefulWidget {
   const PersonalDetailsScreen({super.key});
@@ -32,15 +33,6 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
     super.dispose();
   }
 
-  InputDecoration _inputDecoration(String hint) => InputDecoration(
-        hintText: hint,
-        hintStyle: const TextStyle(color: Colors.grey),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.grey),
-        ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-      );
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +51,7 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                 width: context.propWidth(20), ),
                 SizedBox(height: context.propHeight(24)),
 
-                _buildLabel('First name'),
+                Label(context: context, label: 'First name'),
                 CustomTextField(
                   controller: _firstNameController,
                  hintStyle: const TextStyle(color: Colors.grey),
@@ -70,7 +62,7 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                   validator: (value) => value!.isEmpty ? 'Please enter first name' : null,
                 ),
                 const SizedBox(height: 16),
-                _buildLabel('Last name'),
+                Label(context: context, label: 'Last name'),
                 CustomTextField(
                   controller: _lastNameController,
                   hintText: 'Ali',
@@ -81,7 +73,7 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                    hintStyle: const TextStyle(color: Colors.grey),
                 ),
                 const SizedBox(height: 16),
-                _buildLabel('Country'),
+                Label(context: context, label: 'Country'),
                 CustomTextField(
                   controller: _countryController,
                   hintText: 'Egypt',
@@ -92,7 +84,7 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                    hintStyle: const TextStyle(color: Colors.grey),
                 ),
                 const SizedBox(height: 16),
-                _buildLabel('City'),
+                Label(context: context, label: 'City'),
                 CustomTextField(
                   controller: _cityController,
                   hintText: 'Cairo',
@@ -103,7 +95,7 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                    hintStyle: const TextStyle(color: Colors.grey),
                 ),
                 const SizedBox(height: 16),
-                _buildLabel('Email'),
+                Label(context: context, label: 'Email'),
                 CustomTextField(
                   hintStyle: const TextStyle(color: Colors.grey),
                   controller: _emailController,
@@ -114,7 +106,7 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
           
                 ),
                 const SizedBox(height: 16),
-                _buildLabel('Phone number'),
+                Label(context: context, label: 'Phone number'),
                 CustomTextField(
                   hintStyle: const TextStyle(color: Colors.grey),
                   controller: _phoneController,
@@ -152,15 +144,4 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
         ),
     );
   }
-
-  Widget _buildLabel(String label) => Padding(
-        padding: const EdgeInsets.only(bottom: 6.0),
-        child: Text(
-          label,
-          style: context.textTheme.headlineLarge ?.copyWith(
-            fontSize: context.propWidth(16),
-            
-          ),
-        ),
-      );
 }

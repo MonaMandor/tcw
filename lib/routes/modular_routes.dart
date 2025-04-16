@@ -10,12 +10,15 @@ import 'package:tcw/features/auth/presentation/pages/on_bording_screens.dart';
 import 'package:tcw/features/auth/presentation/pages/splash_screen.dart';
 import 'package:tcw/features/auth/presentation/pages/verification_screen.dart';
 import 'package:tcw/features/courses/data/models/reel_model.dart';
+import 'package:tcw/features/courses/presentation/pages/courses_screen.dart';
 import 'package:tcw/features/courses/presentation/pages/media_screen.dart';
 import 'package:tcw/features/courses/presentation/pages/my_library_screen.dart';
 import 'package:tcw/features/courses/presentation/pages/recommended_courses_screen.dart';
 import 'package:tcw/features/courses/presentation/pages/wish_list_screen.dart';
+import 'package:tcw/features/event/presentation/pages/event_screen.dart';
 import 'package:tcw/features/home/presentation/pages/home_layout_screen.dart';
 import 'package:tcw/features/notification/presentation/pages/notification_screen.dart';
+import 'package:tcw/features/payment/presentation/pages/payment_screen.dart';
 import 'package:tcw/features/points/presentation/pages/points_rewards_screen.dart';
 import 'package:tcw/features/setting/presentation/pages/personal_details_screen.dart';
 import 'package:tcw/features/setting/presentation/pages/setting_screen.dart';
@@ -133,6 +136,21 @@ List<ModularRoute> modularRoutes = <ChildRoute<dynamic>>[
   ChildRoute<dynamic>(
     AppRoutes.wishListScreen,
     child: (_, ModularArguments args) =>  const WishListScreen(),
+    transition: TransitionType.upToDown,
+  ),
+  ChildRoute<dynamic>(
+    AppRoutes.eventScreen,
+    child: (_, ModularArguments args) =>   EventScreen(),
+    transition: TransitionType.upToDown,
+  ),
+  ChildRoute<dynamic>(
+    AppRoutes.coursesScreen,
+    child: (_, ModularArguments args) =>   CoursesScreen(),
+    transition: TransitionType.upToDown,
+  ),
+  ChildRoute<dynamic>(
+    AppRoutes.paymentsScreen,
+    child: (_, ModularArguments args) =>   PaymentsScreen(),
     transition: TransitionType.upToDown,
   ),
   

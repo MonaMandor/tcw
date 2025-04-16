@@ -4,6 +4,7 @@ import 'package:tcw/core/shared/shared_widget/Custom_button.dart';
 import 'package:tcw/core/shared/shared_widget/app_bar.dart';
 import 'package:tcw/core/shared/shared_widget/customTextFormFiled.dart';
 import 'package:tcw/core/shared/shared_widget/large_text_filed.dart';
+import 'package:tcw/features/setting/presentation/widgets/label_widget.dart';
 
 class SupportScreen extends StatefulWidget {
   const SupportScreen({super.key});
@@ -56,7 +57,9 @@ class _SupportScreenState extends State<SupportScreen> {
                  
                 ),
                 SizedBox(height: context.propHeight(24)),
-                _buildLabel('Complaint title'),
+                Label(label: 'Complaint title',
+                  context: context,
+                ),
                 CustomTextField(
                   controller: _complaintTitle,
                   hintStyle: const TextStyle(color: Colors.grey),
@@ -68,7 +71,9 @@ class _SupportScreenState extends State<SupportScreen> {
                       value!.isEmpty ? 'Please enter complaint title' : null,
                 ),
                 const SizedBox(height: 16),
-                _buildLabel('Complaint Type'),
+                Label(label: 'Complaint Type',
+                  context: context,
+                ),
                 CustomTextField(
                   controller: _Complainttype,
                   hintText: 'Technical issue',
@@ -80,7 +85,9 @@ class _SupportScreenState extends State<SupportScreen> {
                   hintStyle: const TextStyle(color: Colors.grey),
                 ),
                 const SizedBox(height: 16),
-                _buildLabel('Details'),
+                Label(label: 'Details',
+                  context: context,
+                ),
                 LargeTextField(
                   controller: _details,
                  
@@ -114,13 +121,4 @@ class _SupportScreenState extends State<SupportScreen> {
     );
   }
 
-  Widget _buildLabel(String label) => Padding(
-        padding: const EdgeInsets.only(bottom: 6.0),
-        child: Text(
-          label,
-          style: context.textTheme.headlineLarge?.copyWith(
-            fontSize: context.propWidth(16),
-          ),
-        ),
-      );
 }
