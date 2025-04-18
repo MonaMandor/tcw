@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:tcw/core/theme/app_colors.dart';
 import 'package:tcw/features/courses/data/models/course_model.dart';
+import 'package:tcw/routes/routes_names.dart';
 
 class CourseCard extends StatelessWidget {
   final CourseModel course;
@@ -88,16 +90,21 @@ class CourseCard extends StatelessWidget {
                       ],
                     ),
                     const Spacer(),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 6),
-                      decoration: BoxDecoration(
-                        color: AppColors.primaryColor,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: const Text(
-                        'More Details',
-                        style: TextStyle(fontSize: 12, color: Colors.white),
+                    GestureDetector(
+                      onTap: () {
+                         Modular.to.pushNamed(AppRoutes.courseDetailsScreen);
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 6),
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryColor,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Text(
+                          'More Details',
+                          style: TextStyle(fontSize: 12, color: Colors.white),
+                        ),
                       ),
                     ),
                   ],

@@ -3,7 +3,7 @@ import 'package:tcw/core/constansts/asset_manger.dart';
 import 'package:tcw/core/constansts/context_extensions.dart';
 import 'package:tcw/core/shared/shared_widget/app_bar.dart';
 import 'package:tcw/features/courses/data/models/course_model.dart';
-import 'package:tcw/features/courses/presentation/widgets/watching_course.dart';
+import 'package:tcw/features/courses/presentation/widgets/lesson_card.dart';
 
 class MyLibraryScreen extends StatefulWidget {
   const MyLibraryScreen({Key? key}) : super(key: key);
@@ -104,7 +104,7 @@ Widget buildTab(String label) {
                   final course = filteredCourses[index];
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
-                    child: WatchingCourseCard(course: course),
+                    child: LessonCard(course: course),
                   );
                 },
               ),

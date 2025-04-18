@@ -57,7 +57,7 @@ class _HomeLayoutState extends State<HomeLayout> {
           ),
         ],
       ),
-      Container(),
+    
     ]);
     selectedIdx = widget.index;
   }
@@ -88,7 +88,7 @@ class _HomeLayoutState extends State<HomeLayout> {
         children: screens,
       ),
       bottomNavigationBar: AnimatedBottomNavigationBar.builder(
-        itemCount: 5,
+        itemCount: 4,
         height: context.propHeight(80),
         gapLocation: GapLocation.none,
         notchSmoothness: NotchSmoothness.smoothEdge,

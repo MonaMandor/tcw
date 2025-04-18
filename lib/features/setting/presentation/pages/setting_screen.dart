@@ -57,6 +57,7 @@ class SettingsScreen extends StatelessWidget {
               ),
               _settingTile(
                 context: context,
+                
                 icon: AssetManger.deletIcon,
                 label: 'Delete Account',
                 onTap: () {
@@ -102,7 +103,7 @@ class SettingsScreen extends StatelessWidget {
             children: [
              Image.asset(
                 icon,
-                width: context.propWidth(24),
+                width: 24,
                 height: 24,
                 color: iconColor,
               ),

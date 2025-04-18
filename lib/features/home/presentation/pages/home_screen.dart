@@ -308,11 +308,16 @@ final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
         Text('Your Courses',
             style:
                 GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold)),
-        Text('See All',
-            style: GoogleFonts.poppins(
-                fontSize: 12,
-                fontWeight: FontWeight.w400,
-                color: AppColors.primaryColor)),
+        GestureDetector(
+          onTap: () {
+            Modular.to.pushNamed(AppRoutes.myCourseScreen);
+          },
+          child: Text('See All',
+              style: GoogleFonts.poppins(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.primaryColor)),
+        ),
       ],
     );
   }

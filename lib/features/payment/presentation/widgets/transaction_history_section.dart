@@ -28,7 +28,7 @@ class TransactionHistorySection extends StatelessWidget {
                   const SizedBox(height: 4),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: [  
                       Text('${transaction["amount"]}',
                           style: GoogleFonts.lato(
                               color: transaction['isIncome'] ? Colors.green : Colors.red,

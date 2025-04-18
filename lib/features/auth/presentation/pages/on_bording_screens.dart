@@ -77,8 +77,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           alignment: Alignment.topRight,
                           child: TextButton(
                             onPressed: () {
-                              _pageController
-                                  .jumpToPage(onboardingPages.length - 1);
+                              Modular.to.pushReplacementNamed(AppRoutes.loginPage);
                             },
                             child: const Text(
                               "Skip",
@@ -98,8 +97,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           child: ClipOval(
                             child: Image.asset(
                               page.image,
-                              width: 180,
-                              height: 180,
+                              width: context.propWidth(180),
+                              height: context.propHeight(180),
                               fit: BoxFit.cover,
                             ),
                           ),

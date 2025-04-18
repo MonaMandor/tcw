@@ -1,16 +1,15 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:tcw/core/constansts/asset_manger.dart';
 import 'package:tcw/features/courses/data/models/course_model.dart';
 import 'package:tcw/features/courses/presentation/widgets/course_vertical_card.dart';
-
+import 'package:tcw/routes/routes_names.dart';
 
 class CourseListScreen extends StatelessWidget {
   final List<CourseModel> courses = [
     CourseModel(
       price: 100.0,
-     available: 1,
+      available: 1,
       coachImageUrl: AssetManger.ex_1,
       title: 'Understanding Concept Of React',
       coachName: 'Amir Ali',
@@ -54,15 +53,13 @@ class CourseListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  SizedBox(
+    return SizedBox(
       height: 400, // Adjust height as needed
       child: ListView.builder(
-          itemCount: 3,
-          itemBuilder: (context, index) => VerticalCourseCard(course: courses[index]),
-       
+        itemCount: 3,
+        itemBuilder: (context, index) =>
+            VerticalCourseCard(course: courses[index]),
       ),
     );
-   
-     
   }
 }

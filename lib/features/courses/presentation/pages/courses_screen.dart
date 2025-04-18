@@ -18,33 +18,32 @@ class CoursesScreen extends StatefulWidget {
   @override
   State<CoursesScreen> createState() => _CoursesScreenState();
 }
+
 final List<CourseModel> courses = [
-    CourseModel(
-      title: "Flutter Development",
-      imageUrl: AssetManger.ex_1,
-      price: 199.99,
-      lessons: 20,
-      duration: "10 hours",
-      available: 1,
-      coachName: "John Doe",
-      coachRole: "Senior Developer",
-      coachImageUrl: AssetManger.ex_2,
-
-    ),
-    CourseModel(
-      title: "Dart Programming",
-      imageUrl: AssetManger.ex_2,
-      price: 149.99,
-      lessons: 15,
-      duration: "8 hours",
-      available: 1,
-      coachName: "Jane Smith",
-      coachRole: "Software Engineer",
-      coachImageUrl: AssetManger.ex_1,
-
-    ),
-    // Add more courses as needed
-  ];
+  CourseModel(
+    title: "Flutter Development",
+    imageUrl: AssetManger.ex_1,
+    price: 199.99,
+    lessons: 20,
+    duration: "10 hours",
+    available: 1,
+    coachName: "John Doe",
+    coachRole: "Senior Developer",
+    coachImageUrl: AssetManger.ex_2,
+  ),
+  CourseModel(
+    title: "Dart Programming",
+    imageUrl: AssetManger.ex_2,
+    price: 149.99,
+    lessons: 15,
+    duration: "8 hours",
+    available: 1,
+    coachName: "Jane Smith",
+    coachRole: "Software Engineer",
+    coachImageUrl: AssetManger.ex_1,
+  ),
+  // Add more courses as needed
+];
 
 class _CoursesScreenState extends State<CoursesScreen> {
   @override
@@ -52,81 +51,83 @@ class _CoursesScreenState extends State<CoursesScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: context.propHeight(32)),
-              CustomAppBar(
-                title: 'Courses',
+        child: CustomScrollView(
+          slivers: [
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              sliver: SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: context.propHeight(32)),
+                    const CustomAppBar(title: 'Courses'),
+                    SizedBox(height: context.propHeight(24)),
+                    _buildSearchAndFilter(),
+                    SizedBox(height: context.propHeight(24)),
+                    _buildMyCourses(title: 'My Courses'),
+                    SizedBox(height: context.propHeight(10)),
+                  ],
+                ),
               ),
-              SizedBox(height: context.propHeight(24)),
-              _buildSearchAndFilter(),
-              SizedBox(height: context.propHeight(24)),
-              _buildMyCourses(
-                title: 'My Courses',
-               
+            ),
+
+            /// CourseListScreen
+            SliverToBoxAdapter(child: CourseListScreen()),
+
+            /// Library Section
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              sliver: SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: context.propHeight(24)),
+                    _buildMyCourses(
+                      title: 'My Library',
+                      onTab: () {
+                        Modular.to.pushNamed(AppRoutes.myLibraryScreen);
+                      },
+                    ),
+                    CourseListHorizontal(courses: courses), // Keep as is
+
+                    SizedBox(height: context.propHeight(24)),
+                    _buildMyCourses(
+                      title: 'Recommended Courses',
+                      onTab: () {
+                        Modular.to
+                            .pushNamed(AppRoutes.recommendedCoursesScreen);
+                      },
+                    ),
+                    SizedBox(height: context.propHeight(12)),
+                  ],
+                ),
               ),
-              SizedBox(height: context.propHeight(10)),
-              CourseListScreen(),
-              SizedBox(height: context.propHeight(24)),
-               _buildMyCourses(
-                title: 'My Library',
-                 onTab: () {
-                  Modular.to.pushNamed(AppRoutes.myLibraryScreen);
-                },
+            ),
+
+            /// Recommended Course horizontal list
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: context.propHeight(400),
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  itemCount: courses.length,
+                  separatorBuilder: (_, __) => const SizedBox(width: 12),
+                  itemBuilder: (context, index) {
+                    return SizedBox(
+                      width: context.propWidth(300),
+                      child: CourseCard(course: courses[index]),
+                    );
+                  },
+                ),
               ),
-              CourseListHorizontal(
-                courses: [
-                  CourseModel(
-                    title: 'Lesson 6',
-                    imageUrl: AssetManger.ex_1,
-                    coachName: 'Ahmed Mohamed',
-                    coachImageUrl: AssetManger.ex_2,
-                    price: 0,
-                    lessons: 12,
-                    duration: '2h 20m',
-                    available: 10,
-                    coachRole: 'Senior Developer',
-                  ),
-                  CourseModel(
-                    title: 'Lesson 7',
-                    imageUrl: AssetManger.container,
-                    coachName: 'Sara Ali',
-                    coachImageUrl: AssetManger.ex_1,
-                    price: 0,
-                    lessons: 15,
-                    duration: '1h 50m',
-                    available: 5,
-                    coachRole: 'Software Engineer',
-                  ),
-                  // Add more if needed
-                ],
-              ),
-              SizedBox(height: context.propHeight(24)),
-              _buildMyCourses(
-                title: "Recommended Courses",
-                onTab: () {
-                 Modular.to.pushNamed(AppRoutes.recommendedCoursesScreen);
-                },
-              ),
-              SizedBox(
-      height: context.propHeight(400), // Adjust height as needed
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: courses.length,
-       
-        itemBuilder: (context, index) {
-          return SizedBox(
-            width: context.propWidth(300), // Adjust width as needed
-            child: CourseCard(course: courses[index]),
-          );
-        },
-      ),
-              )
-            ],
-          ),
+            ),
+
+            /// Bottom Padding
+            SliverToBoxAdapter(
+              child: SizedBox(height: context.propHeight(32)),
+            ),
+          ],
         ),
       ),
     );
@@ -191,10 +192,10 @@ class _CoursesScreenState extends State<CoursesScreen> {
     );
   }
 
-  Widget _buildMyCourses( 
-    {required String title ,
-    VoidCallback? onTab,}
-  ) {
+  Widget _buildMyCourses({
+    required String title,
+    VoidCallback? onTab,
+  }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [

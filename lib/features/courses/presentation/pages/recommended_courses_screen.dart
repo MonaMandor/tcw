@@ -43,7 +43,7 @@ class RecommendedCoursesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF9F9F9),
+      backgroundColor: Colors.white,
      
       body: SafeArea(
         child: Column(

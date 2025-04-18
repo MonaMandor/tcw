@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tcw/core/constansts/context_extensions.dart';
 import 'package:tcw/features/courses/data/models/course_model.dart';
-import 'package:tcw/features/courses/presentation/widgets/watching_course.dart';
+import 'package:tcw/features/courses/presentation/widgets/lesson_card.dart';
 class CourseListHorizontal extends StatelessWidget {
   final List<CourseModel> courses;
 
@@ -19,7 +19,7 @@ class CourseListHorizontal extends StatelessWidget {
         itemBuilder: (context, index) {
           return SizedBox(
             width: context.propWidth(260), // Adjust width as needed
-            child: WatchingCourseCard(course: courses[index]),
+            child: LessonCard(course: courses[index]),
           );
         },
       ),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:tcw/core/constansts/context_extensions.dart';
 import 'package:tcw/core/theme/app_colors.dart';
+import 'package:tcw/routes/routes_names.dart';
 
 class EventSlider extends StatefulWidget {
   final List<Map<String, String>> events;
@@ -118,7 +120,7 @@ class _EventSliderState extends State<EventSlider> {
                             ),
                           ),
                           onPressed: () {
-                            // TODO: implement join button action
+                         // Modular.to.pushNamed(AppRoutes.liveEventScreen);
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
