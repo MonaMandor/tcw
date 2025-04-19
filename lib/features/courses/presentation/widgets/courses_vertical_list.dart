@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:tcw/core/constansts/asset_manger.dart';
 import 'package:tcw/features/courses/data/models/course_model.dart';
 import 'package:tcw/features/courses/presentation/widgets/course_vertical_card.dart';
-import 'package:tcw/routes/routes_names.dart';
+
 
 class CourseListScreen extends StatelessWidget {
   final List<CourseModel> courses = [

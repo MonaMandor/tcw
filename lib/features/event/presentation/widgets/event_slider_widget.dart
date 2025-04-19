@@ -120,7 +120,7 @@ class _EventSliderState extends State<EventSlider> {
                             ),
                           ),
                           onPressed: () {
-                         // Modular.to.pushNamed(AppRoutes.liveEventScreen);
+                       Modular.to.pushNamed(AppRoutes.liveEventScreen);
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,

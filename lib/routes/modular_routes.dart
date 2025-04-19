@@ -151,7 +151,7 @@ List<ModularRoute> modularRoutes = <ChildRoute<dynamic>>[
     child: (_, ModularArguments args) => CourseDetailsScreen(),
     transition: TransitionType.upToDown,
   ),
-  /* ChildRoute<dynamic>(
+  ChildRoute<dynamic>(
     AppRoutes.liveEventScreen,
     child: (_, ModularArguments args) => LiveEventScreen(
       
@@ -162,7 +162,7 @@ List<ModularRoute> modularRoutes = <ChildRoute<dynamic>>[
       ],
     ),
     transition: TransitionType.upToDown,
-  ), */
+  ), 
   ChildRoute<dynamic>(
     AppRoutes.myCourseScreen,
     child: (_, ModularArguments args) => MyCourseScreen(
