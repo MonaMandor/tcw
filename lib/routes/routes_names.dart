@@ -22,5 +22,6 @@ class AppRoutes {
   static String get courseDetailsScreen => '/CourseDetailsScreen';
   static String get liveEventScreen => '/LiveEventScreen';
   static String get myCourseScreen => '/MyCourseScreen';
+  static String get lessonScreen => '/LessonScreen';
 
 }

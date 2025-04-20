@@ -12,6 +12,7 @@ import 'package:tcw/features/auth/presentation/pages/verification_screen.dart';
 import 'package:tcw/features/courses/data/models/reel_model.dart';
 import 'package:tcw/features/courses/presentation/pages/course_datails_screen.dart';
 import 'package:tcw/features/courses/presentation/pages/courses_screen.dart';
+import 'package:tcw/features/courses/presentation/pages/lesson_screen.dart';
 import 'package:tcw/features/courses/presentation/pages/media_screen.dart';
 import 'package:tcw/features/courses/presentation/pages/my_library_screen.dart';
 import 'package:tcw/features/courses/presentation/pages/recommended_courses_screen.dart';
@@ -167,6 +168,14 @@ List<ModularRoute> modularRoutes = <ChildRoute<dynamic>>[
     AppRoutes.myCourseScreen,
     child: (_, ModularArguments args) => MyCourseScreen(
      
+    ),
+    transition: TransitionType.upToDown,
+  ),
+  ChildRoute<dynamic>(
+    AppRoutes.lessonScreen,
+    child: (_, ModularArguments args) => LessonScreen(
+     
+      lessonModel: args.data,
     ),
     transition: TransitionType.upToDown,
   ),

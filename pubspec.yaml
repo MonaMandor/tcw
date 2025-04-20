@@ -48,6 +48,7 @@ dependencies:
   country_picker: ^2.0.27
   animated_bottom_navigation_bar: ^1.4.0
   smooth_page_indicator: ^1.2.1
+  chewie: ^1.10.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
