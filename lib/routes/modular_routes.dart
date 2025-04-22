@@ -9,6 +9,8 @@ import 'package:tcw/features/auth/presentation/pages/next_or_back_screen.dart';
 import 'package:tcw/features/auth/presentation/pages/on_bording_screens.dart';
 import 'package:tcw/features/auth/presentation/pages/splash_screen.dart';
 import 'package:tcw/features/auth/presentation/pages/verification_screen.dart';
+import 'package:tcw/features/chat/presentation/pages/inbox_screen.dart';
+import 'package:tcw/features/chat/presentation/pages/message_screen.dart';
 import 'package:tcw/features/courses/data/models/reel_model.dart';
 import 'package:tcw/features/courses/presentation/pages/course_datails_screen.dart';
 import 'package:tcw/features/courses/presentation/pages/courses_screen.dart';
@@ -16,6 +18,7 @@ import 'package:tcw/features/courses/presentation/pages/lesson_screen.dart';
 import 'package:tcw/features/courses/presentation/pages/media_screen.dart';
 import 'package:tcw/features/courses/presentation/pages/my_library_screen.dart';
 import 'package:tcw/features/courses/presentation/pages/recommended_courses_screen.dart';
+import 'package:tcw/features/courses/presentation/pages/tasks_screen.dart';
 import 'package:tcw/features/courses/presentation/pages/wish_list_screen.dart';
 import 'package:tcw/features/courses/presentation/pages/your_courses_screen.dart';
 import 'package:tcw/features/event/data/models/question_model.dart';
@@ -176,6 +179,25 @@ List<ModularRoute> modularRoutes = <ChildRoute<dynamic>>[
     child: (_, ModularArguments args) => LessonScreen(
      
       lessonModel: args.data,
+    ),
+    transition: TransitionType.upToDown,
+  ),
+  ChildRoute<dynamic>(
+    AppRoutes.TasksScreen,
+    child: (_, ModularArguments args) => TasksScreen(
+    
+    ),
+    transition: TransitionType.upToDown,
+  ),
+  ChildRoute<dynamic>(
+    AppRoutes.inboxScreen,
+    child: (_, ModularArguments args) => InboxScreen(),
+    transition: TransitionType.upToDown,
+  ),
+  ChildRoute<dynamic>(
+    AppRoutes.chatScreen,
+    child: (_, ModularArguments args) => ChatScreen(
+    
     ),
     transition: TransitionType.upToDown,
   ),

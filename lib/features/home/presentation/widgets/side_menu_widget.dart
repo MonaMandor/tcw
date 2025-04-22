@@ -44,12 +44,19 @@ class SideMenu extends StatelessWidget {
                     Modular.to.pushNamed(AppRoutes.eventScreen);
                   },
                   title: "Events"),
-              MenuItem(icon: AssetManger.inboxIcon, title: "Inbox"),
+              MenuItem(icon: AssetManger.inboxIcon, title: "Inbox",
+                  onTap: () {
+                    Modular.to.pushNamed(AppRoutes.inboxScreen);
+                  }),
+           
               MenuItem(icon: AssetManger.coursesIcon, title: "Courses",
                   onTap: () {
                     Modular.to.pushNamed(AppRoutes.coursesScreen);
                   }),
-               MenuItem(icon: AssetManger.taskIcon, title: "Task"),
+               MenuItem(icon: AssetManger.taskIcon, title: "Task",
+                  onTap: () {
+                    Modular.to.pushNamed(AppRoutes.TasksScreen);
+                  }),
                MenuItem(icon: AssetManger.payMentIcon, title: "Payments",
                   onTap: () {
                     Modular.to.pushNamed(AppRoutes.paymentsScreen);

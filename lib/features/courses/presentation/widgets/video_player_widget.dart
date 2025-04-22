@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tcw/core/constansts/context_extensions.dart';
 import 'package:tcw/core/theme/app_colors.dart';
-import 'package:tcw/features/courses/presentation/pages/lesson_screen.dart';
+import 'package:tcw/features/courses/presentation/widgets/full_screen_player.dart';
 
 import 'package:video_player/video_player.dart';
 
