@@ -62,7 +62,12 @@ class SideMenu extends StatelessWidget {
                     Modular.to.pushNamed(AppRoutes.paymentsScreen);
                   }),
                MenuItem(
-                  icon: AssetManger.masterMindIcon, title: "Master mind"),
+                  icon: AssetManger.masterMindIcon, title: "Master mind",
+                  onTap: () {
+                    Modular.to.pushNamed(AppRoutes.groupsScreen);
+                  }),
+                  
+              
                MenuItem(icon: AssetManger.tcwIcon, title: "TCW media",
                   onTap: () {
                     Modular.to.pushNamed(AppRoutes.tCWMediaScreen);

@@ -26,5 +26,7 @@ class AppRoutes {
   static String get TasksScreen => '/tasksScreen';
   static String get inboxScreen => '/InboxScreen';
   static String get chatScreen => '/ChatScreen';
+  static String get groupsScreen => '/GroupsScreen';
+  static String get groupChatScreen => '/GroupChatScreen';
 
 }

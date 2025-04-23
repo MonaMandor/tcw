@@ -9,6 +9,8 @@ import 'package:tcw/features/auth/presentation/pages/next_or_back_screen.dart';
 import 'package:tcw/features/auth/presentation/pages/on_bording_screens.dart';
 import 'package:tcw/features/auth/presentation/pages/splash_screen.dart';
 import 'package:tcw/features/auth/presentation/pages/verification_screen.dart';
+import 'package:tcw/features/chat/presentation/pages/group_chat_screen.dart';
+import 'package:tcw/features/chat/presentation/pages/groups_screen.dart';
 import 'package:tcw/features/chat/presentation/pages/inbox_screen.dart';
 import 'package:tcw/features/chat/presentation/pages/message_screen.dart';
 import 'package:tcw/features/courses/data/models/reel_model.dart';
@@ -198,6 +200,18 @@ List<ModularRoute> modularRoutes = <ChildRoute<dynamic>>[
     AppRoutes.chatScreen,
     child: (_, ModularArguments args) => ChatScreen(
     
+    ),
+    transition: TransitionType.upToDown,
+  ),
+  ChildRoute<dynamic>(
+    AppRoutes.groupsScreen,
+    child: (_, ModularArguments args) => GroupsScreen(),
+    transition: TransitionType.upToDown,
+  ),
+  ChildRoute<dynamic>(
+    AppRoutes.groupChatScreen,
+    child: (_, ModularArguments args) => GroupChatScreen(
+     
     ),
     transition: TransitionType.upToDown,
   ),
